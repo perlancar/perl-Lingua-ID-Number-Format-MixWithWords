@@ -4,9 +4,11 @@ use 5.010;
 use strict;
 use warnings;
 
-use Lingua::EN::Number::Format::MixWithWords;
-use parent qw(Lingua::EN::Number::Format::MixWithWords);
+use Lingua::Base::Number::Format::MixWithWords;
+use parent qw(Lingua::Base::Number::Format::MixWithWords);
+require Lingua::EN::Number::Format::MixWithWords;
 
+use Data::Clone;
 use Exporter::Lite;
 use Math::Round qw(nearest);
 use Number::Format;
@@ -16,12 +18,15 @@ our @EXPORT_OK = qw(format_number_mix);
 
 # VERSION
 
-our %SPEC = %Lingua::EN::Number::Format::MixWithWords::SPEC;
+our %SPEC;
+$SPEC{format_number_mix} = clone(
+    $Lingua::EN::Number::Format::MixWithWords::SPEC{format_number_mix});
+delete $SPEC{format_number_mix}{args}{scale};
 
 sub format_number_mix {
     my %args = @_;
 
-    my $f = Lingua::ID::Number::Format::MixWithWords->new(
+    my $f = __PACKAGE__->new(
         num_decimal   => $args{num_decimal},
         min_format    => $args{min_format},
         min_fraction  => $args{min_fraction},
@@ -29,38 +34,41 @@ sub format_number_mix {
     $f->_format($args{num});
 }
 
+my $id_names = {
+    #2   => 'ratus',
+    3   => 'ribu',
+    6   => 'juta',
+    9   => 'miliar',
+    12   => 'triliun',
+    15   => 'kuadriliun',
+    18   => 'kuintiliun',
+    21   => 'sekstiliun',
+    24   => 'septiliun',
+    27   => 'oktiliun',
+    30   => 'noniliun',
+    33   => 'desiliun',
+    36   => 'undesiliun',
+    39   => 'duodesiliun',
+    42   => 'tredesiliun',
+    45   => 'kuatuordesiliun',
+    48   => 'kuindesiliun',
+    51   => 'seksdesiliun',
+    54   => 'septendesiliun',
+    57   => 'oktodesiliun',
+    60   => 'novemdesiliun',
+    63   => 'vigintiliun',
+    100  => 'googol',
+    303  => 'sentiliun',
+};
+
 sub new {
     my ($class, %args) = @_;
     $args{decimal_point} //= ",";
     $args{thousands_sep} //= ".";
-    $args{names} //= {
-        #2   => 'ratus',
-        3   => 'ribu',
-        6   => 'juta',
-        9   => 'miliar',
-       12   => 'triliun',
-       15   => 'kuadriliun',
-       18   => 'kuintiliun',
-       21   => 'sekstiliun',
-       24   => 'septiliun',
-       27   => 'oktiliun',
-       30   => 'noniliun',
-       33   => 'desiliun',
-       36   => 'undesiliun',
-       39   => 'duodesiliun',
-       42   => 'tredesiliun',
-       45   => 'kuatuordesiliun',
-       48   => 'kuindesiliun',
-       51   => 'seksdesiliun',
-       54   => 'septendesiliun',
-       57   => 'oktodesiliun',
-       60   => 'novemdesiliun',
-       63   => 'vigintiliun',
-       100  => 'googol',
-       303  => 'sentiliun',
-    };
+    $args{names}         //= $id_names;
+
     # XXX should use "SUPER"
-    my $self = Lingua::EN::Number::Format::MixWithWords->new(%args);
+    my $self = Lingua::Base::Number::Format::MixWithWords->new(%args);
     bless $self, $class;
 }
 
