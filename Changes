@@ -1,20 +1,26 @@
 Revision history for Lingua-ID-Number-Format-MixWithWords
 
-0.04    2012-03-23
+0.05     2013-09-09 (SHARYANTO)
 
-        No functional changes. Remove dependency to old module Sub::Spec.
-
-
-0.03    2011-09-21
-
-        No functional changes. Add alias package MixWithWords::ID.
+         - No functional changes. Rebuild with MakeMaker instead of
+           Module::Build because the latter is deprecated from core in 5.19.
 
 
-0.02    2011-09-16
+0.04    2012-03-23 (SHARYANTO)
 
-        No functional changes. Adjust for new Lingua::Base::NFW.
+        - No functional changes. Remove dependency to old module Sub::Spec.
 
 
-0.01    2011-09-15
+0.03    2011-09-21 (SHARYANTO)
 
-        First release.
+        - No functional changes. Add alias package MixWithWords::ID.
+
+
+0.02    2011-09-16 (SHARYANTO)
+
+        - No functional changes. Adjust for new Lingua::Base::NFW.
+
+
+0.01    2011-09-15 (SHARYANTO)
+
+        - First release.
