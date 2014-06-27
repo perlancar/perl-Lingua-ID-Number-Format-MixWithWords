@@ -8,31 +8,34 @@ use Lingua::Base::Number::Format::MixWithWords;
 use parent qw(Lingua::Base::Number::Format::MixWithWords);
 require Lingua::EN::Number::Format::MixWithWords;
 
-use Data::Clone;
 use Exporter::Lite;
 use Math::Round qw(nearest);
 use Number::Format;
 use POSIX qw(floor log10);
+use Perinci::Sub::Util qw(gen_modified_sub);
 
 our @EXPORT_OK = qw(format_number_mix);
 
+# DATE
 # VERSION
 
 our %SPEC;
-$SPEC{format_number_mix} = clone(
-    $Lingua::EN::Number::Format::MixWithWords::SPEC{format_number_mix});
-delete $SPEC{format_number_mix}{args}{scale};
 
-sub format_number_mix {
-    my %args = @_;
+gen_modified_sub(
+    output_name => 'format_number_mix',
+    base_name => 'Lingua::EN::Number::Format::MixWithWords::format_number_mix',
+    remove_args => ['scale'],
+    output_code => sub {
+        my %args = @_;
 
-    my $f = __PACKAGE__->new(
-        num_decimal   => $args{num_decimal},
-        min_format    => $args{min_format},
-        min_fraction  => $args{min_fraction},
-    );
-    $f->_format($args{num});
-}
+        my $f = __PACKAGE__->new(
+            num_decimal   => $args{num_decimal},
+            min_format    => $args{min_format},
+            min_fraction  => $args{min_fraction},
+        );
+        $f->_format($args{num});
+    }
+);
 
 my $id_names = {
     #2   => 'ratus',
@@ -74,7 +77,6 @@ sub new {
 
 1;
 # ABSTRACT: Format number to a mixture of numbers and words (e.g. "12,3 juta")
-__END__
 
 =head1 SYNOPSIS
 
