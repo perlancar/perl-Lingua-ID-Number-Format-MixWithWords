@@ -1,5 +1,8 @@
 package Lingua::ID::Number::Format::MixWithWords;
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
@@ -16,13 +19,11 @@ use Perinci::Sub::Util qw(gen_modified_sub);
 
 our @EXPORT_OK = qw(format_number_mix);
 
-# DATE
-# VERSION
-
 our %SPEC;
 
 gen_modified_sub(
     output_name => 'format_number_mix',
+    summary => 'Format number to a mixture of numbers and words (e.g. "12,3 juta")',
     base_name => 'Lingua::EN::Number::Format::MixWithWords::format_number_mix',
     remove_args => ['scale'],
     output_code => sub {
@@ -76,7 +77,7 @@ sub new {
 }
 
 1;
-# ABSTRACT: Format number to a mixture of numbers and words (e.g. "12,3 juta")
+# ABSTRACT:
 
 =head1 SYNOPSIS
 
