@@ -94,11 +94,6 @@ small or too large so it does not have any appropriate names, it will be
 formatted like a normal number.
 
 
-=head1 FUNCTIONS
-
-None of the functions are exported by default, but they are exportable.
-
-
 =head1 SEE ALSO
 
 L<Lingua::ID::Nums2Words>
