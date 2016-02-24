@@ -11,12 +11,12 @@ use Lingua::Base::Number::Format::MixWithWords;
 use parent qw(Lingua::Base::Number::Format::MixWithWords);
 require Lingua::EN::Number::Format::MixWithWords;
 
-use Exporter::Lite;
 use Math::Round qw(nearest);
 use Number::Format;
 use POSIX qw(floor log10);
 use Perinci::Sub::Util qw(gen_modified_sub);
 
+use Exporter;
 our @EXPORT_OK = qw(format_number_mix);
 
 our %SPEC;
