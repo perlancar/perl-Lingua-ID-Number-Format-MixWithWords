@@ -4,7 +4,7 @@ use 5.010;
 use strict;
 use warnings;
 use Lingua::ID::Number::Format::MixWithWords qw(format_number_mix);
-use Test::More 0.96;
+use Test::More 0.98;
 
 sub test_format {
     my (%args) = @_;
