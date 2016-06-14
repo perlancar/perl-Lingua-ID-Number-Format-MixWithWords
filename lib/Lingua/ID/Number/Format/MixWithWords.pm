@@ -7,7 +7,6 @@ use 5.010001;
 use strict;
 use warnings;
 
-use Lingua::Base::Number::Format::MixWithWords;
 use parent qw(Lingua::Base::Number::Format::MixWithWords);
 require Lingua::EN::Number::Format::MixWithWords;
 
@@ -16,7 +15,7 @@ use Number::Format;
 use POSIX qw(floor log10);
 use Perinci::Sub::Util qw(gen_modified_sub);
 
-use Exporter;
+use Exporter qw(import);
 our @EXPORT_OK = qw(format_number_mix);
 
 our %SPEC;
