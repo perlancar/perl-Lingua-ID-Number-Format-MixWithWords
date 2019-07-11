@@ -1,11 +1,11 @@
-0.07    2016-06-14 (PERLANCAR)
+0.07    2016-06-14  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- [dist] Replace Exporter::Lite with Exporter.
 
 
-0.06    2015-09-03 (PERLANCAR)
+0.06    2015-09-03  Released-By: PERLANCAR
 
 	- No functional changes.
 
@@ -14,27 +14,27 @@
 	  requirement.
 
 
-0.05     2013-09-09 (SHARYANTO)
+0.05     2013-09-09  Released-By: SHARYANTO
 
          - No functional changes. Rebuild with MakeMaker instead of
            Module::Build because the latter is deprecated from core in 5.19.
 
 
-0.04    2012-03-23 (SHARYANTO)
+0.04    2012-03-23  Released-By: SHARYANTO
 
         - No functional changes. Remove dependency to old module Sub::Spec.
 
 
-0.03    2011-09-21 (SHARYANTO)
+0.03    2011-09-21  Released-By: SHARYANTO
 
         - No functional changes. Add alias package MixWithWords::ID.
 
 
-0.02    2011-09-16 (SHARYANTO)
+0.02    2011-09-16  Released-By: SHARYANTO
 
         - No functional changes. Adjust for new Lingua::Base::NFW.
 
 
-0.01    2011-09-15 (SHARYANTO)
+0.01    2011-09-15  Released-By: SHARYANTO
 
         - First release.
